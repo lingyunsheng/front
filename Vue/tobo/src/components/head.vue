@@ -36,14 +36,20 @@
             class="login-dialog"
             v-if="loginStatus"
           >
-            <img src="../assets/log.png" alt="logo" width="120px" height="95px" style="position:absolute;top:-80px;left:30%" />
-            <form action="/" method="post" class="form">
-              <input type="phone" placeholder="请输入手机号或邮箱" value="" v-model="logininfo" />
+            <img
+              src="../assets/log.png"
+              alt="logo"
+              width="120px"
+              height="95px"
+              style="position:absolute;top:-80px;left:30%"
+            />
+            <p class="form">
+              <input type="phone" placeholder="请输入手机号或邮箱" value v-model="phone" ref="phones" />
               <br />
-              <input type="password" placeholder="请输入密码" value="" v-model="logininfo" />
+              <input type="password" placeholder="请输入密码" value v-model="password" ref="passwords" />
               <br />
               <button type="submit" @click="login">登录</button>
-            </form>
+            </p>
             <p class="account">
               没有账号？
               <span class="account-register" @click="openRegister">注册</span>
@@ -65,16 +71,22 @@
             class="register-dialog"
             v-show="registerStatus"
           >
-            <img src="../assets/log.png" alt="logo" width="120px" height="95px" style="position:absolute;top:-80px;left:30%" />
-            <form actions post="get" class="form">
-              <input type="username" placeholder="请输入用户名" value="" />
+            <img
+              src="../assets/log.png"
+              alt="logo"
+              width="120px"
+              height="95px"
+              style="position:absolute;top:-80px;left:30%"
+            />
+            <p class="form">
+              <input type="username" placeholder="请输入用户名" value v-model="registerName" />
               <br />
-              <input type="phone" placeholder="请输入手机号" value="" />
+              <input type="phone" placeholder="请输入手机号" value v-model="registerPhone" />
               <br />
-              <input type="password" placeholder="请输入密码（至少6位）" value="" />
+              <input type="password" placeholder="请输入密码（至少6位）" value v-model="registerPassword" />
               <br />
               <button type="submit" @click="register">注册</button>
-            </form>
+            </p>
             <p class="account">
               <span class="account-register" @click="openLogin">已有账号</span>
             </p>
@@ -85,7 +97,6 @@
               </span>
             </p>
           </el-dialog>
-          
         </ul>
       </div>
     </div>
@@ -102,23 +113,40 @@
   </div>
 </template>
 <script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
-import { Button, Dialog, Input } from "element-ui";
+import { Component, Vue, Model, Ref } from "vue-property-decorator";
+import { Button, Dialog, Input, Message } from "element-ui";
 @Component
 export default class Head extends Vue {
-  private data() {
-    return {
-      msg: "1111",
-      dialogVisible: false,
-      dialogRegisterVisible: false,
-      registerStatus: true,
-      loginStatus: true,
-      phone: '',
-      password: '',
-      logininfo: [],
-    };
-  }
+  @Ref("phone") readonly phones!: number | string;
+  private dataA: string = "test";
+  private msg: string = "111";
+  private dialogVisible: boolean = false;
+  private dialogRegisterVisible: boolean = false;
+  private registerStatus: boolean = true;
+  private loginStatus: boolean = true;
+  private phone: number | string = "";
+  private password: string = "";
+  private registerName: string = "";
+  private registerPhone: number = 0;
+  private registerPassword: string = "";
+  private logininfo: Array<[]> = [];
+  // private data() {
+  //   return {
+  //     msg: "1111",
+  //     dialogVisible: false,
+  //     dialogRegisterVisible: false,
+  //     registerStatus: true,
+  //     loginStatus: true,
+  //     phone: '',
+  //     password: '',
+  //     logininfo: [],
+  //   };
+  // }
   private created() {
+    // this.login();
+    return {};
+  }
+  private mounted() {
     return {};
   }
   private handleClose(done) {
@@ -136,23 +164,58 @@ export default class Head extends Vue {
     this.registerStatus = !this.registerStatus;
   }
   private login() {
-    this.$axios.post('http:://localhost:3000/user/login', {
-      username: this.phone,
-      password: this.password,
-    }).then((res) => {
-      console.log(this.phone, this.password, this.logininfo);
-      this.$router.push('/');
-    });
+    console.log(`用户名:${this.phone}`);
+    console.log(`密码:${this.password}`);
+    this.$axios
+      .post("/api/user/login", {
+        username: this.phone,
+        password: this.password
+      })
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("username", this.phone);
+        localStorage.setItem("password", this.password);
+        if (res.status == 200) {
+          this.loginStatus = false;
+          this.$message({
+            message: "登录成功",
+            type: "success"
+          });
+          this.$router.push("/login");
+        } else {
+          this.$router.back();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        this.$message.error("用户名/密码错误,请重试");
+      });
   }
-  private register(username, phone, password) {
+  private register() {
+    let username: string = this.registerName;
+    let password: string = this.registerPassword;
+    let phone: number = this.registerPhone;
     if (!username) {
-      alert('用户名不能为空');
-    } else if(phone.length<11 && typeof phone !== 'number') {
-      alert('请输入11位的手机号');
-    } else if(!password) {
-      alert('请输入密码');
+      this.$message.error("请输入用户名");
+    } else if (password.length < 6) {
+      this.$message.error("请输入密码，不得少于6位");
+    } else if (phone.length !== 11) {
+      this.$message.error("手机号输入错误");
     } else {
-      this.$router.push('/register');
+      this.$axios
+        .post("/api/user/register", {
+          username: username,
+          password: password,
+          phone: phone
+        })
+        .then(res => {
+          this.$message({
+            message: "注册成功",
+            type: "success"
+          });
+          this.registerStatus = false;
+          this.$router.push("/login");
+        });
     }
   }
 }
@@ -250,7 +313,8 @@ export default class Head extends Vue {
         }
 
         .login-dialog {
-          margin-top:6.25rem;
+          margin-top: 6.25rem;
+
           .form {
             margin-top: -2.5rem;
 
@@ -308,7 +372,8 @@ export default class Head extends Vue {
         }
 
         .register-dialog {
-          margin-top:6.25rem;
+          margin-top: 6.25rem;
+
           .form {
             margin-top: -2.5rem;
 
@@ -346,7 +411,7 @@ export default class Head extends Vue {
               left: 50%;
               top: 50%;
               transform: translate(-60%, -50%);
-              margin-top: 0.9375rem;
+              margin-top: 0.5rem;
             }
 
             .account-forgot {
@@ -379,7 +444,7 @@ export default class Head extends Vue {
     background: #fff;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    padding: 0 10.5rem 0 12rem;
+    padding: 0 10.5rem 0 12.5rem;
 
     .select-item {
       .select-items {

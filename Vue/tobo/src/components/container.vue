@@ -24,11 +24,12 @@ import { Component, Vue } from "vue-property-decorator";
 import { axios } from "axios";
 @Component
 export default class Container extends Vue {
-  private data() {
-    return {
-      res: [],
-    }
-  }
+  private res: Array<[]> = [];
+  // private data() {
+  //   return {
+  //     res: [],
+  //   }
+  // }
   private async created() {
     this.getContent();
   }
@@ -36,7 +37,7 @@ export default class Container extends Vue {
     return {};
   }
   private getContent() {
-    this.$axios.get("http://localhost:3000/content", {}).then((res) => {
+    this.$axios.get("/api/content", {}).then((res) => {
       this.res = res.data.data;
       console.log("----", res.data);
     }).catch((err) => {
