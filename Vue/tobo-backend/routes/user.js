@@ -9,6 +9,7 @@ module.exports = (app) => {
 
   /**router.post()配置post路由 */
   router.post("/user/login", userContorller.login);
+  router.post("/user/register", userContorller.register);
   app.use(bodyParser());
   app.use(router.routes()).use(router.allowedMethods());
 };

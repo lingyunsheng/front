@@ -36,3 +36,4 @@ class Mysql {
 }
 
 module.exports = new Mysql();
+
