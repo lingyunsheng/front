@@ -61,3 +61,146 @@ module.exports = {
 
 import 'lib-flexible/flexible'
 ```
+
+
+# vue-property-decorator
+
+vue-property-decorator是一个vue库，和vue-class-component一样的class库，源于class库
+/* npm 仓库地址 */
+// https://www.npmjs.com/package/vue-property-decorator
+
+/* github地址 */
+// https://github.com/kaorun343/vue-property-decorator
+
+**@Component(options)**
+
+```js
+
+@Component({
+  components: {
+    Helloworld,  //声明对子组件的引用
+  }
+})
+export default class App extend Vue {}
+```
+
+**filters**
+filter表示对数据的筛选，根linux的管道符相似，数据通过filter进行处理，配置时一定要使用filters
+
+```js
+<template>
+  <div id="app">
+    {{name | filterA}}
+  </div>
+</template>
+<script lang="ts">
+@Component({
+  components: {
+    Helloworld,  //声明对子组件的引用
+  },
+  filters: {
+    addWords: (value) => `${name} word`
+  }
+})
+export default class App extend Vue {
+  private name: string =''
+}
+</script>
+```
+
+**@Prop**
+属性声明，自定义组件使用
+```js
+export default {
+  name: 'upload',
+  props: {
+    value: {
+      type: string,
+      default: ''
+    }
+  }
+}
+```
+
+ts的写法
+```js
+import {Prop, Vue, Component} from 'vue-property-decorator';
+export default class Upload extend Vue {
+  @Prop();
+  private value:string = ''
+}
+```
+
+**computed计算属性**
+vue2.5写法
+```js
+computed: {
+  getImgUrl() {
+    return this.value;
+  }
+}
+```
+
+ts写法
+```ts
+get imgUrl() {
+  return 'www'+this.value;
+}
+```
+
+**@watch:监测vue实力上数据的变动**
+如果对象，键是观察表达式 值对应回调
+```js
+export default {
+  name: 'index',
+  data() {
+    return {
+      demo: {
+        name: ''
+      },
+      value: ''
+    }
+  },
+  computed: {
+    newName() {
+      return this.demo.name;
+    }
+  },
+  watch: {
+    newName(val) {
+      this.value=val;
+    }
+  }
+}
+```
+
+
+ts
+
+```ts
+export default class App extends Vue {
+  demo:any={name:''}
+  value: string = ''
+
+  getName() {
+    return this.demo.name;
+  }
+  // 写一个监测数据的变化函数回调
+  @watch('newName')
+  newName(val) {
+    this.value = val;
+  }
+}
+```
+
+
+**emit**
+父组件通过props传递给子组件 子组件通过emit传给父组件
+```ts
+import {Emit, Component, Vue} from 'vue-property-decorator'
+
+@Component({})
+export default class App extends Vue {
+  @Emit(this.eventAttach())
+}
+```

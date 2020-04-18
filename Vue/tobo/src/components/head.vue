@@ -102,12 +102,13 @@
     </div>
     <div class="header-select">
       <ul class="select-item">
-        <li class="select-items rank">推荐</li>
-        <li class="select-items backend">后端</li>
-        <li class="select-items frontend">前端</li>
-        <li class="select-items ai">人工智能</li>
-        <li class="select-items tool">开发工具</li>
-        <li class="select-items read">阅读</li>
+        <li
+          class="select-items"
+          :class="{'actived':'item.actived', 'disactived':'!item.actived'}"
+          :key="item.key"
+          v-for="(item, index) in selectItem"
+          @click="changeSelectItems(item, index)"
+        >{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -127,9 +128,37 @@ export default class Head extends Vue {
   private phone: number | string = "";
   private password: string = "";
   private registerName: string = "";
-  private registerPhone: number = 0;
+  private registerPhone: number;
   private registerPassword: string = "";
   private logininfo: Array<[]> = [];
+  private selectItem: Array<any> = [
+    {
+      name: "推荐",
+      key: "rank"
+    },
+    {
+      name: "后端",
+      key: "backend"
+    },
+    {
+      name: "前端",
+      key: "frontend"
+    },
+    {
+      name: "人工智能",
+      key: "ai"
+    },
+    {
+      name: "开发工具",
+      key: "tool"
+    },
+    {
+      name: "阅读",
+      key: "read"
+    }
+  ];
+  private actived: boolean = false;
+  // private disactived: boolean = true;
   // private data() {
   //   return {
   //     msg: "1111",
@@ -147,7 +176,20 @@ export default class Head extends Vue {
     return {};
   }
   private mounted() {
-    return {};
+    let selectItem = document.getElementsByClassName("select-items");
+    selectItem[0].style.color = "#007fff";
+    selectItem.addEventListener("click", function() {
+      for (let i = 0; i < selectItem.length; i++) {
+        selectItem[i].style.color = "#007fff";
+        for (let j = 0; j < selectItem.length; i++) {
+          if (i !== j) {
+            selectItem[i].style.color = "#71777c";
+          }
+        }
+      }
+    });
+
+    // this.changeSelectItems();
   }
   private handleClose(done) {
     done();
@@ -217,6 +259,10 @@ export default class Head extends Vue {
           this.$router.push("/login");
         });
     }
+  }
+  private changeSelectItems(item, index) {
+    console.log("点击了:" + item.name + "下标是:" + index);
+    Vue.set(item, "actived", "true");
   }
 }
 </script>
@@ -452,10 +498,19 @@ export default class Head extends Vue {
         float: left;
         margin-left: 1rem;
         color: #71777C;
+
+        &:hover {
+          color: #007fff;
+          cursor: pointer;
+        }
       }
 
-      .rank {
-        color: #007FFF;
+      .actived {
+        color: #007fff;
+      }
+
+      .disactived {
+        color: #71777C;
       }
     }
   }

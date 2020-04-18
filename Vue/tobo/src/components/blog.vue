@@ -1,17 +1,23 @@
 <template>
-  <div id="app">
-    <div class="blog">
-      <Head :class="[stickys==true ? 'blog-sticky':'blog']" id="header"></Head>
-      <div class="content" id="content">
-        <div class="left">
-          <Container></Container>
-        </div>
-        <div class="right">
-          <Banner></Banner>
-        </div>
-        <el-backtop target=".page-component__scroll .el-scrollbar__wrap" :bottom="100" :visibility-height="20">
-          <div
-            style="{
+  <div class="blog">
+    <div class="header" :class="[stickys==true ? 'header-sticky':'']" id="header">
+      <Head></Head>
+    </div>
+
+    <div class="content" id="content">
+      <div class="left">
+        <Container></Container>
+      </div>
+      <div class="right" :class="[stickys==true ? 'right-sticky':'']">
+        <Banner></Banner>
+      </div>
+    </div>
+    <el-backtop
+      target=".page-component__scroll .el-scrollbar__wrap"
+      :bottom="100"
+    >
+      <div
+        style="{
               height: 100%;
               width: 100%;
               background-color: red;
@@ -20,10 +26,8 @@
               line-height: 40px;
               color: #1989fa;
             }"
-          >UP</div>
-        </el-backtop>
-      </div>
-    </div>
+      >UP</div>
+    </el-backtop>
   </div>
 </template>
 <script lang='ts'>
@@ -52,18 +56,27 @@ export default class Blog extends Vue {
   }
   public mounted() {
     // window.addEventListener("scroll", this.watchScroll);
-    const header = document.getElementById("header");
-    this.offsetTop = header.offsetTop;
-    this.offsetHeight = header.offsetHeight;
-    // console.log(this.offsetTop, this.offsetHeight);
+    const header = document.getElementById("content");
+    this.offsetTop = content.offsetTop;
+    this.offsetHeight = content.offsetHeight;
+    console.log(this.offsetTop, this.offsetHeight);
+    window.addEventListener("scroll", this.watchScroll);
   }
   public watchScroll() {
-    // console.log("----", this.stickys);
+    console.log("----", this.stickys);
     // console.log(document.documentElement.scrollTop);
+    // this.$nextTick(function() {
+    //   const header = document.getElementById("header");
+    //   this.offsetTop = header.offsetTop;
+    //   this.offsetHeight = header.offsetHeight;
+    //   console.log("offsetTop:" + this.offsetTop + "," + this.offsetHeight);
+    // });
     const scrollTop =
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
+    console.log(scrollTop);
+    console.log("offsetTop:" + this.offsetTop + "," + this.offsetHeight);
     if (scrollTop > this.offsetTop - this.offsetHeight * 2) {
       this.stickys = true;
     } else {
@@ -77,7 +90,7 @@ export default class Blog extends Vue {
 </script>
 
 <style lang='stylus' scoped>
-#app {
+.blog {
   width: 100%;
   height: 100%;
   font-size: 16px;
@@ -87,42 +100,53 @@ export default class Blog extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  overflow: hidden;
+  position: relative;
+  overflow: visible;
   background: #f4f5f5;
 
-  .blog {
+  .header {
+    width: 100%;
     position: relative;
+  }
+
+  .header-sticky {
+    position: fixed;
     top: 0;
     overflow: visible;
+  }
 
-    .blog-sticky {
-      position: sticky;
-      position: -webkit-sticky;
-      top: 0;
+  .content {
+    width: 100%;
+    margin-top: 20px;
+
+    .left {
+      border: 1px solid #fff;
+      width: 40%;
+      height: 100%;
+      float: left;
+      margin-left: 17%;
+      background: #fff;
     }
 
-    .content {
-      width: 100%;
-      margin-top: 20px;
-      position: relative;
+    .right {
+      border: 1px solid #fff;
+      width: 19%;
+      height: 100%;
+      float: left;
+      margin-left: 20px;
+      background: #fff;
+    }
 
-      .left {
-        border: 1px solid #fff;
-        width: 40%;
-        height: 100%;
-        float: left;
-        margin-left: 17%;
-        background: #fff;
-      }
-
-      .right {
-        border: 1px solid #fff;
-        width: 19%;
-        height: 100%;
-        float: left;
-        margin-left: 20px;
-        background: #fff;
-      }
+    .right-sticky {
+      border: 1px solid #fff;
+      width: 19%;
+      height: 100%;
+      float: left;
+      margin-left: 20px;
+      background: #fff;
+      top: 18%;
+      right: 22.5%;
+      position: fixed;
     }
   }
 }

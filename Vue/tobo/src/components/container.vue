@@ -4,17 +4,17 @@
       <div class="container-item-info">
         <ul class="info">
           <li class="info-detail">{{item.type}}</li>
-          <li class="info-detail">{{item.name}}</li>
+          <li class="info-detail name">{{item.name}}</li>
           <li class="info-detail">{{item.time}}发布</li>
-          <li class="info-detail">{{item.category}}</li>
+          <li class="info-detail category">{{item.category}}</li>
         </ul>
       </div>
       <div class="container-item-title">
         <p>{{item.title}}</p>
       </div>
       <div class="container-item-pv">
-        <span class="like">{{item.like}}</span>
-        <span class="anwser">{{item.chat}}</span>
+          <el-button class="like" plain size="mini" icon="el-icon-thumb">{{item.like}}</el-button>
+          <el-button class="anwser" plain size="mini" icon="el-icon-chat-square">{{item.chat}}</el-button>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
 import { axios } from "axios";
+import { Button } from "element-ui";
 @Component
 export default class Container extends Vue {
   private res: Array<[]> = [];
@@ -37,12 +38,15 @@ export default class Container extends Vue {
     return {};
   }
   private getContent() {
-    this.$axios.get("/api/content", {}).then((res) => {
-      this.res = res.data.data;
-      console.log("----", res.data);
-    }).catch((err) => {
-      console.log('err', err);
-    });
+    this.$axios
+      .get("/api/content", {})
+      .then(res => {
+        this.res = res.data.data;
+        console.log("----", res.data);
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   }
 }
 </script>
@@ -73,6 +77,18 @@ export default class Container extends Vue {
         color: #B2BAC2;
         cursor: pointer;
       }
+
+      .info .name {
+        &:hover {
+          color: #007fff;
+        }
+      }
+
+      .info .category {
+        &:hover {
+          color: #007fff;
+        }
+      }
     }
 
     .container-item-title {
@@ -91,14 +107,29 @@ export default class Container extends Vue {
 
     .container-item-pv {
       font-size: 0.875rem;
-      margin-top: -1rem;
       margin-left: 0.3125rem;
       padding-bottom: 0.3125rem;
       color: #B2BAC2;
       cursor: pointer;
 
-      span {
-        margin-right: 0.3125rem;
+      .like {
+        width: 3rem;
+        height: 1.4rem;
+        color: #B2BAC2;
+        cursor: pointer;
+        float: left;
+        text-align: center;
+        padding-left:.3rem;
+      }
+
+      .anwser {
+        width: 3rem;
+        height: 1.4rem;
+        margin-left:-4px;
+        color: #B2BAC2;
+        cursor: pointer;
+        text-align: center;
+        padding-left:.3rem;
       }
     }
   }
