@@ -9,15 +9,11 @@
         <Container></Container>
       </div>
       <div class="right" :class="[stickys==true ? 'right-sticky':'']">
-        <Banner></Banner>
-      </div>
-    </div>
-    <el-backtop
-      target=".page-component__scroll .el-scrollbar__wrap"
-      :bottom="100"
-    >
-      <div
-        style="{
+        <Register class="right-register" v-show="!loginSuccess"></Register>
+        <Banner class="right-banner"></Banner>
+        <el-backtop target=".page-component__scroll .el-scrollbar__wrap" :bottom="100">
+          <div
+            style="{
               height: 100%;
               width: 100%;
               background-color: red;
@@ -26,35 +22,37 @@
               line-height: 40px;
               color: #1989fa;
             }"
-      >UP</div>
-    </el-backtop>
+          >UP</div>
+        </el-backtop>
+      </div>
+    </div>
   </div>
 </template>
 <script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop, Inject } from "vue-property-decorator";
 import Head from "./head.vue";
 import Container from "./container.vue";
+import Register from "./register.vue";
 import Banner from "./banner.vue";
 import { Backtop } from "element-ui";
 @Component({
   components: {
     Head,
     Container,
+    Register,
     Banner
   }
 })
 export default class Blog extends Vue {
-  public data() {
-    return {
-      stickys: false,
-      offsetTop: "",
-      offsetHeight: ""
-    };
-  }
+  @Inject() public loginSuccess!: boolean;
+  private stickys: boolean = false;
+  private offsetTop: string = "";
+  private offsetHeight: string = "";
   public created() {
     return {};
   }
   public mounted() {
+    console.log("父子组件通讯", this.loginSuccess);
     // window.addEventListener("scroll", this.watchScroll);
     const header = document.getElementById("content");
     this.offsetTop = content.offsetTop;
@@ -120,7 +118,7 @@ export default class Blog extends Vue {
     margin-top: 20px;
 
     .left {
-      border: 1px solid #fff;
+      // border: 1px solid #fff;
       width: 40%;
       height: 100%;
       float: left;
@@ -129,12 +127,20 @@ export default class Blog extends Vue {
     }
 
     .right {
-      border: 1px solid #fff;
+      // border: 1px solid #fff;
       width: 19%;
       height: 100%;
       float: left;
       margin-left: 20px;
-      background: #fff;
+      background: #f4f5f5;
+
+      .right-banner {
+        margin-top: 30px;
+      }
+
+      .right-register {
+        background: #fff;
+      }
     }
 
     .right-sticky {

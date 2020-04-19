@@ -125,7 +125,7 @@ export default class Container extends Vue {
       .anwser {
         width: 3rem;
         height: 1.4rem;
-        margin-left:-4px;
+        margin-left:-2px;
         color: #B2BAC2;
         cursor: pointer;
         text-align: center;

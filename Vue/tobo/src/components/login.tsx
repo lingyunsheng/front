@@ -1,5 +1,5 @@
 import { Component, Vue, Provide, Prop } from "vue-property-decorator";
-import { Button } from "element-ui";
+import Blog from './blog.vue';
 // Vue.use(Button);
 @Component({})
 export default class Login extends Vue {
@@ -10,11 +10,7 @@ export default class Login extends Vue {
   public render() {
     return (
       <div>
-        {this.count}
-        <button >点击我</button>
-        <div class='login' style={{color: 'red', marginTop: '10px'}}>
-            <el-button type='primary' onclick={this.handleClick}>登录</el-button>
-        </div>
+        <Blog></Blog>
       </div>
     );
   }

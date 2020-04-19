@@ -11,11 +11,7 @@
       </div>
       <div class="header-menu">
         <ul class="header-item">
-          <li class="header-items">首页</li>
-          <li class="header-items">沸点</li>
-          <li class="header-items">话题</li>
-          <li class="header-items">小册</li>
-          <li class="header-items">活动</li>
+          <li class="header-items" v-for="(item, index) in headerItems" :key="index">{{item.name}}</li>
         </ul>
       </div>
       <div class="header-search">
@@ -27,7 +23,7 @@
           <li class="header-sign-items write">
             <i class="el-icon-tickets" style="margin-right:3px; margin-top:1px"></i>写文章
           </li>
-          <li class="header-sign-items login" @click="dialogVisible = true">登录</li>
+          <li class="header-sign-items login" @click="dialogVisible = true" v-show="isIndex">登录</li>
           <el-dialog
             title="登录"
             :visible.sync="dialogVisible"
@@ -58,11 +54,15 @@
             <p class="sign">
               注册登录即表示同意
               <span>
-                <a href="www.baidu.com">用户协议、隐私政策</a>
+                <router-link to="/terms" class="sign-terms">用户协议、隐私政策</router-link>
               </span>
             </p>
           </el-dialog>
-          <li class="header-sign-items register" @click="dialogRegisterVisible= true">注册</li>
+          <li
+            class="header-sign-items register"
+            @click="dialogRegisterVisible= true"
+            v-show="isIndex"
+          >注册</li>
           <el-dialog
             title="注册"
             :visible.sync="dialogRegisterVisible"
@@ -93,10 +93,36 @@
             <p class="sign">
               注册登录即表示同意
               <span>
-                <a href="www.baidu.com">用户协议、隐私政策</a>
+                <router-link to="/terms" class="sign-terms">用户协议、隐私政策</router-link>
               </span>
             </p>
           </el-dialog>
+          <li class="header-sign-items annouce" v-show="loginSuccess">
+            <i class="el-icon-message-solid"></i>
+          </li>
+          <li class="header-sign-items avatar" v-show="loginSuccess">
+            <el-dropdown>
+              <img
+                class="el-dropdown-link"
+                src="../assets/log.png"
+                alt="logo"
+                width="25"
+                height="25"
+              />
+              <el-dropdown-menu slot="dropdown" class="el-dropdown-link-items">
+                <el-dropdown-item>写文章</el-dropdown-item>
+                <el-dropdown-item>草稿</el-dropdown-item>
+                <el-dropdown-item>我的主页</el-dropdown-item>
+                <el-dropdown-item>我赞过的</el-dropdown-item>
+                <el-dropdown-item>我的收藏集</el-dropdown-item>
+                <el-dropdown-item>已购</el-dropdown-item>
+                <el-dropdown-item>标签管理</el-dropdown-item>
+                <el-dropdown-item>设置</el-dropdown-item>
+                <el-dropdown-item>关于</el-dropdown-item>
+                <el-dropdown-item @click="logout">登出</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </li>
         </ul>
       </div>
     </div>
@@ -114,11 +140,12 @@
   </div>
 </template>
 <script lang='ts'>
-import { Component, Vue, Model, Ref } from "vue-property-decorator";
-import { Button, Dialog, Input, Message } from "element-ui";
+import { Component, Vue, Model, Ref, Provide } from "vue-property-decorator";
+import { Button, Dialog, Input, Message, Dropdown } from "element-ui";
 @Component
 export default class Head extends Vue {
   @Ref("phone") readonly phones!: number | string;
+  @Provide() public loginSuccess: boolean = false;
   private dataA: string = "test";
   private msg: string = "111";
   private dialogVisible: boolean = false;
@@ -131,6 +158,29 @@ export default class Head extends Vue {
   private registerPhone: number;
   private registerPassword: string = "";
   private logininfo: Array<[]> = [];
+  private isIndex: boolean = true;
+  private headerItems: Array<any> = [
+    {
+      name: "首页",
+      key: "timeline"
+    },
+    {
+      name: "沸点",
+      key: "pins"
+    },
+    {
+      name: "话题",
+      key: "topic"
+    },
+    {
+      name: "小册",
+      key: "books"
+    },
+    {
+      name: "活动",
+      key: "events"
+    }
+  ];
   private selectItem: Array<any> = [
     {
       name: "推荐",
@@ -188,7 +238,6 @@ export default class Head extends Vue {
         }
       }
     });
-
     // this.changeSelectItems();
   }
   private handleClose(done) {
@@ -219,11 +268,14 @@ export default class Head extends Vue {
         localStorage.setItem("password", this.password);
         if (res.status == 200) {
           this.loginStatus = false;
+          this.loginSuccess = true;
+          this.isIndex = false;
+          console.log(this.loginSuccess);
           this.$message({
             message: "登录成功",
             type: "success"
           });
-          this.$router.push("/login");
+          this.$router.push("/blog");
         } else {
           this.$router.back();
         }
@@ -263,6 +315,9 @@ export default class Head extends Vue {
   private changeSelectItems(item, index) {
     console.log("点击了:" + item.name + "下标是:" + index);
     Vue.set(item, "actived", "true");
+  }
+  private logout() {
+    this.$router.go(-1);
   }
 }
 </script>
@@ -344,7 +399,7 @@ export default class Head extends Vue {
         .header-sign-items {
           list-style: none;
           float: left;
-          margin-left: 0.9375rem;
+          margin-left: 1rem;
           color: #007fff;
           font-size: 1.1rem;
           cursor: pointer;
@@ -354,6 +409,24 @@ export default class Head extends Vue {
               content: '|';
               display: block;
               color: #007fff;
+            }
+          }
+
+          .header-sign-items .avatar {
+            .el-dropdown-link {
+              cursor: pointer;
+              color: #fbfbfb;
+              border-radius:50% solid #000; 
+              margin-top:5px;
+              border: 1px solid #000;
+            }
+
+            .el-icon-arrow-down {
+              font-size: 12px;
+            }
+            .el-dropdown-link-items {
+              width: 9.8125rem;
+              color: #fbfbfb;
             }
           }
         }
@@ -409,7 +482,7 @@ export default class Head extends Vue {
             font-size: 0.8rem;
 
             span {
-              a {
+              .sign-terms {
                 text-decoration: none;
                 color: #007fff;
               }
@@ -473,7 +546,7 @@ export default class Head extends Vue {
             font-size: 0.8rem;
 
             span {
-              a {
+              .sign-terms {
                 text-decoration: none;
                 color: #007fff;
               }

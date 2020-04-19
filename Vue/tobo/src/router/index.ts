@@ -1,27 +1,35 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Login from './../components/login';
-import Head from './../components/blog.vue';
+import Blog from './../components/blog.vue';
 Vue.use(VueRouter);
 
 const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Blog',
-    component: () => import('./../components/blog.vue'),
-    children: [
-      {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-      },
-      {
-        path: '/head',
-        name: 'Head',
-        component: Head,
-      }
-    ]
-  }
+    component: Blog,
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/books',
+    name: 'Books',
+    component: () => import('./../components/books.vue'),
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: () => import('./../components/terms.vue'),
+  },
   // {
   //   path: '/login',
   //   name: 'Login',
