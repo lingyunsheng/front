@@ -33,6 +33,16 @@ class Mysql {
             })
         })
     }
+    insertUser(insertInfo) {
+        return new Promise((resolve, reject) => {
+            pool.query(insertInfo, function(err, data) {
+                if(err) {
+                    throw err;
+                }
+                resolve(data);
+            })
+        })
+    }
 }
 
 module.exports = new Mysql();
