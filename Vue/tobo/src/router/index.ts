@@ -30,6 +30,11 @@ const routes: RouteConfig[] = [
     name: 'Terms',
     component: () => import('./../components/terms.vue'),
   },
+  {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: () => import('./../components/detail.vue'),
+  },
   // {
   //   path: '/login',
   //   name: 'Login',

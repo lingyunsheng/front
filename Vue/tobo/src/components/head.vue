@@ -277,7 +277,7 @@ export default class Head extends Vue {
           });
           this.$router.push("/blog");
         } else {
-          this.$router.go(-1);
+          this.$message.error("用户名/密码错误,请重试");
         }
       })
       .catch(err => {

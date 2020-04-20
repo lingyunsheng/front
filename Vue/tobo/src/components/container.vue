@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="container-item" v-for="item in res" :key="item.id">
+    <div class="container-item" v-for="item in res" :key="item.id" @click="toDetail(item)">
       <div class="container-item-info">
         <ul class="info">
           <li class="info-detail">{{item.type}}</li>
@@ -13,8 +13,8 @@
         <p>{{item.title}}</p>
       </div>
       <div class="container-item-pv">
-          <el-button class="like" plain size="mini" icon="el-icon-thumb">{{item.like}}</el-button>
-          <el-button class="anwser" plain size="mini" icon="el-icon-chat-square">{{item.chat}}</el-button>
+        <el-button class="like" plain size="mini" icon="el-icon-thumb">{{item.like}}</el-button>
+        <el-button class="anwser" plain size="mini" icon="el-icon-chat-square">{{item.chat}}</el-button>
       </div>
     </div>
   </div>
@@ -48,6 +48,9 @@ export default class Container extends Vue {
         console.log("err", err);
       });
   }
+  private toDetail(item) {
+    this.$router.push({ path: "/detail", query: { id: item.id }, name: 'Detail' });
+  }
 }
 </script>
 
@@ -57,6 +60,7 @@ export default class Container extends Vue {
   height: 100%;
   display: block;
   padding-left: 15px;
+
 
   .container-item {
     display: flex;
@@ -119,17 +123,17 @@ export default class Container extends Vue {
         cursor: pointer;
         float: left;
         text-align: center;
-        padding-left:.3rem;
+        padding-left: 0.3rem;
       }
 
       .anwser {
         width: 3rem;
         height: 1.4rem;
-        margin-left:-2px;
+        margin-left: -2px;
         color: #B2BAC2;
         cursor: pointer;
         text-align: center;
-        padding-left:.3rem;
+        padding-left: 0.3rem;
       }
     }
   }
