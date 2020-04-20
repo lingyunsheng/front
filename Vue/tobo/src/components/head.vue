@@ -277,7 +277,7 @@ export default class Head extends Vue {
           });
           this.$router.push("/blog");
         } else {
-          this.$router.back();
+          this.$router.go(-1);
         }
       })
       .catch(err => {
@@ -308,7 +308,9 @@ export default class Head extends Vue {
             type: "success"
           });
           this.registerStatus = false;
-          this.$router.push("/login");
+          this.loginSuccess = true;
+          this.isIndex = false;
+          this.$router.push("/blog");
         });
     }
   }
