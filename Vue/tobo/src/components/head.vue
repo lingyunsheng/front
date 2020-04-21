@@ -11,7 +11,12 @@
       </div>
       <div class="header-menu">
         <ul class="header-item">
-          <li class="header-items" v-for="(item, index) in headerItems" :key="index">{{item.name}}</li>
+          <li
+            class="header-items"
+            v-for="(item, index) in headerItems"
+            :key="index"
+            @click="handleComponent(item)"
+          >{{item.name}}</li>
         </ul>
       </div>
       <div class="header-search">
@@ -137,12 +142,20 @@
         >{{item.name}}</li>
       </ul>
     </div>
+    <div :is="currentComponent"></div>
   </div>
 </template>
 <script lang='ts'>
-import { Component, Vue, Model, Ref, Provide } from "vue-property-decorator";
+import {
+  Component,
+  Vue,
+  Model,
+  Ref,
+  Provide,
+  Emit
+} from "vue-property-decorator";
 import { Button, Dialog, Input, Message, Dropdown } from "element-ui";
-@Component
+@Component({})
 export default class Head extends Vue {
   @Ref("phone") readonly phones!: number | string;
   @Provide() public loginSuccess: boolean = false;
@@ -162,23 +175,23 @@ export default class Head extends Vue {
   private headerItems: Array<any> = [
     {
       name: "首页",
-      key: "timeline"
+      key: "Container"
     },
     {
       name: "沸点",
-      key: "pins"
+      key: "Pins"
     },
     {
       name: "话题",
-      key: "topic"
+      key: "Topic"
     },
     {
       name: "小册",
-      key: "books"
+      key: "Books"
     },
     {
       name: "活动",
-      key: "events"
+      key: "Events"
     }
   ];
   private selectItem: Array<any> = [
@@ -228,16 +241,18 @@ export default class Head extends Vue {
   private mounted() {
     let selectItem = document.getElementsByClassName("select-items");
     selectItem[0].style.color = "#007fff";
-    selectItem.addEventListener("click", function() {
-      for (let i = 0; i < selectItem.length; i++) {
+    for (let i = 0; i < selectItem.length; i++) {
+      selectItem[i].addEventListener("click", function() {
         selectItem[i].style.color = "#007fff";
         for (let j = 0; j < selectItem.length; i++) {
           if (i !== j) {
             selectItem[i].style.color = "#71777c";
           }
         }
-      }
-    });
+      });
+    }
+    let head = document.querySelectorAll(".header-items");
+    head[0].style.color = "#007fff";
     // this.changeSelectItems();
   }
   private handleClose(done) {
@@ -320,6 +335,9 @@ export default class Head extends Vue {
   }
   private logout() {
     this.$router.go(-1);
+  }
+  private handleComponent(item) {
+    this.$emit("emitClickEvent", item.key);
   }
 }
 </script>
@@ -418,14 +436,15 @@ export default class Head extends Vue {
             .el-dropdown-link {
               cursor: pointer;
               color: #fbfbfb;
-              border-radius:50% solid #000; 
-              margin-top:5px;
+              border-radius: 50% solid #000;
+              margin-top: 5px;
               border: 1px solid #000;
             }
 
             .el-icon-arrow-down {
               font-size: 12px;
             }
+
             .el-dropdown-link-items {
               width: 9.8125rem;
               color: #fbfbfb;

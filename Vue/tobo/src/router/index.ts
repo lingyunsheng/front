@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Login from './../components/login';
 import Blog from './../components/blog.vue';
+import Pins from './../components/pins';
 Vue.use(VueRouter);
 
 const routes: RouteConfig[] = [
@@ -34,6 +35,11 @@ const routes: RouteConfig[] = [
     path: '/detail/:id',
     name: 'Detail',
     component: () => import('./../components/detail.vue'),
+  },
+  {
+    path: '/pins',
+    name: 'Pins',
+    component: Pins,
   },
   // {
   //   path: '/login',

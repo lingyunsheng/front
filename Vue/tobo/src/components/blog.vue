@@ -1,12 +1,12 @@
 <template>
   <div class="blog">
     <div class="header" :class="[stickys==true ? 'header-sticky':'']" id="header">
-      <Head></Head>
+      <Head @emitClickEvent="handleChange"></Head>
     </div>
 
     <div class="content" id="content">
       <div class="left">
-        <Container></Container>
+        <component :is="currentComponent"></component>
       </div>
       <div class="right" :class="[stickys==true ? 'right-sticky':'']">
         <Register class="right-register" v-show="!loginSuccess"></Register>
@@ -32,6 +32,7 @@
 import { Component, Vue, Prop, Inject } from "vue-property-decorator";
 import Head from "./head.vue";
 import Container from "./container.vue";
+import Pins from "./pins";
 import Register from "./register.vue";
 import Banner from "./banner.vue";
 import { Backtop } from "element-ui";
@@ -40,7 +41,8 @@ import { Backtop } from "element-ui";
     Head,
     Container,
     Register,
-    Banner
+    Banner,
+    Pins,
   }
 })
 export default class Blog extends Vue {
@@ -48,6 +50,7 @@ export default class Blog extends Vue {
   private stickys: boolean = false;
   private offsetTop: string = "";
   private offsetHeight: string = "";
+  private currentComponent: string = 'Container';
   public created() {
     return {};
   }
@@ -59,6 +62,15 @@ export default class Blog extends Vue {
     this.offsetHeight = content.offsetHeight;
     console.log(this.offsetTop, this.offsetHeight);
     window.addEventListener("scroll", this.watchScroll);
+  }
+  public handleChange(item) {
+    console.log('item', item)
+    if(item === 'Container') {
+      this.currentComponent = 'Container';
+    }
+    if(item==='Pins') {
+      this.currentComponent = 'Pins';
+    }
   }
   public watchScroll() {
     console.log("----", this.stickys);
