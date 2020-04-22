@@ -2,6 +2,7 @@
   <div class="blog">
     <div class="header" :class="[stickys==true ? 'header-sticky':'']" id="header">
       <Head @emitClickEvent="handleChange"></Head>
+      <component :is="rankComponent"></component>
     </div>
 
     <div class="content" id="content">
@@ -35,6 +36,7 @@ import Container from "./container.vue";
 import Pins from "./pins";
 import Register from "./register.vue";
 import Banner from "./banner.vue";
+import Rank from './rank.vue';
 import { Backtop } from "element-ui";
 @Component({
   components: {
@@ -43,6 +45,7 @@ import { Backtop } from "element-ui";
     Register,
     Banner,
     Pins,
+    Rank,
   }
 })
 export default class Blog extends Vue {
@@ -51,6 +54,7 @@ export default class Blog extends Vue {
   private offsetTop: string = "";
   private offsetHeight: string = "";
   private currentComponent: string = 'Container';
+  private rankComponent: string = 'Rank';
   public created() {
     return {};
   }
@@ -67,6 +71,9 @@ export default class Blog extends Vue {
     console.log('item', item)
     if(item === 'Container') {
       this.currentComponent = 'Container';
+      this.rankComponent = 'Rank';
+    } else {
+      this.rankComponent = '';
     }
     if(item==='Pins') {
       this.currentComponent = 'Pins';
