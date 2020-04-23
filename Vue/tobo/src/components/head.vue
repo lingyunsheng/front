@@ -55,7 +55,7 @@
             <p class="account">
               没有账号？
               <span class="account-register" @click="openRegister">注册</span>
-              <span class="account-forgot">忘记密码</span>
+              <span class="account-forgot" @click="reset">忘记密码</span>
             </p>
             <p class="sign">
               注册登录即表示同意
@@ -232,6 +232,7 @@ export default class Head extends Vue {
     this.loginStatus = !this.loginStatus;
     this.registerStatus = !this.registerStatus;
   }
+  @Emit("isLogin") send(isIndex: string) {}
   private login() {
     console.log(`用户名:${this.phone}`);
     console.log(`密码:${this.password}`);
@@ -254,6 +255,7 @@ export default class Head extends Vue {
             type: "success"
           });
           this.$router.push("/blog");
+          this.send(this.isIndex);
         } else {
           this.$message.error("用户名/密码错误,请重试");
         }
@@ -291,6 +293,9 @@ export default class Head extends Vue {
           this.$router.push("/blog");
         });
     }
+  }
+  private reset() {
+    this.$router.push({path: '/reset-password'});
   }
   private logout() {
     this.$router.go(-1);

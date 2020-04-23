@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router';
 import Login from './../components/login';
 import Blog from './../components/blog.vue';
 import Pins from './../components/pins';
+import Reset from './../components/reset';
 Vue.use(VueRouter);
 
 const routes: RouteConfig[] = [
@@ -40,6 +41,11 @@ const routes: RouteConfig[] = [
     path: '/pins',
     name: 'Pins',
     component: Pins,
+  },
+  {
+    path: '/reset-password',
+    name: 'Reset',
+    component: Reset,
   },
   // {
   //   path: '/login',

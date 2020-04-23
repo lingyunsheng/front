@@ -10,7 +10,7 @@
         <component :is="currentComponent"></component>
       </div>
       <div class="right" :class="[stickys==true ? 'right-sticky':'']">
-        <Register class="right-register" v-show="!loginSuccess"></Register>
+        <Register class="right-register"></Register>
         <Banner class="right-banner"></Banner>
         <el-backtop target=".page-component__scroll .el-scrollbar__wrap" :bottom="100">
           <div
