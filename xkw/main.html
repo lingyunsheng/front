@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="Shortcut Icon" href="./favicon.ico" type="image/x-icon" />
+	<title>小学学科网</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #f2f2f2;
+		}
+
+		.content {
+			background-image: url('./bg.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.content .header-logo {
+			padding-left: 20%;
+			width:150px;
+			height: 70px;
+			margin-top: 20px;
+		}
+
+		.header-topic {
+			background-image: url('./banner.png');
+			transform: scale(0.6);
+		}
+
+		.select {
+			background: #eee;
+		}
+
+		.select-item {
+			margin: auto;
+			width: 60%;
+			background: #fff;
+			border: 1px solid #fff;
+			margin-bottom: -50px;
+			padding: 10px 10px;
+			position: relative;
+			top: -85px;
+			border-radius: 4px;
+		}
+
+		.select-item .select-topic {
+			list-style: none;
+			padding-top: 10px;
+			color: #333333;
+		}
+
+		.select-item .select-topic li {
+			display: inline-block;
+			padding-right: 20px;
+			padding-bottom: 10px;
+			cursor: pointer;
+			text-transform: capitalize;
+			/* transition: all 0.3s linear; */
+		}
+
+		.select-item .select-topic .active {
+			background:orange;
+			text-align:center;
+			height: 25px;
+			width: 70px;
+			padding-bottom: 5px;
+			padding-left: 5px;
+			line-height:25px;
+			border-radius:12.5px;
+			color:#fff;
+			margin-bottom: 10px;
+		}
+
+
+		.select-item .select-xueqi {
+			list-style: none;
+			padding-top: 10px;
+			color: #333333;
+		}
+
+		.select-item .select-xueqi li {
+			display: inline-block;
+			padding-right: 20px;
+			padding-bottom: 10px;
+			cursor: pointer;
+			text-transform: capitalize;
+			/* transition: all 0.3s linear */
+		}
+
+		.select-item .select-xueqi .active {
+			background:orange;
+			text-align:center;
+			border-radius:12.5px;
+			color:#fff;
+			height: 25px;
+			width: 70px;
+			padding-bottom: 5px;
+			padding-left: 5px;
+			line-height:25px;
+		}
+
+		.select-detail {
+			margin: auto;
+			width: 61%;
+			height: 100%;
+			background: #fff;
+			border: 1px solid #fff;
+			display: flex;
+			flex-wrap: wrap;
+			border-radius: 4px;
+			padding-bottom: 10px;
+		}
+
+		.select-detail .select-detail-item {
+			display: block;
+			width: 29%;
+			height: 270px;
+			margin-right: 5px;
+			margin-top: 20px;
+			margin-left: 17px;
+			border: 1px solid #eee;
+			padding: 10px;
+		}
+
+		.select-detail .select-detail-item .detail-box {
+			display: block;
+		}
+
+		.select-detail .select-detail-item .detail-box .detail-cat {
+			float: left;
+		}
+
+		.select-detail .select-detail-item .detail-box .detail-cat .btn-cat {
+			color: #2DA1FF;
+			width: 100px;
+			height: 46px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px solid #ececec;
+			margin-left: 10px;
+			margin-top: 10px;
+			background-image: url('./icon_bg.png');
+			background-position: 8px -390px;
+			padding-left: 15px;
+			font-size: 16px;
+			background-color: #fff;
+		}
+
+		.select-detail .select-detail-item .detail-box .detail-content {
+			float: left;
+			margin-left: 15px;
+			padding-top: 10px;
+		}
+
+		.detail-content .detail-content-title {
+			font-size: 18px;
+			display: block;
+			color: #333;
+			width: 200px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		.detail-content .detail-content-key {
+			display: block;
+			font-size: 10px;
+			color: #999999;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 210px;
+			text-overflow: ellipsis;
+		}
+
+
+		.footer {
+			margin-top: 200px;
+			width: 100%;
+			height: 140px;
+			background-color: #f2f2f2;
+			text-align: center;
+			color: #333;
+		}
+
+		.footer .footer-jubao {
+			margin-top: 15px;
+		}
+
+		.footer .footer-chanquan {
+			margin-top: 5px;
+			color: #404144;
+		}
+
+		.footer span {
+			font-size: 8px;
+			color: #B5B5B5;
+		}
+
+		.footer span a {
+			text-decoration: none;
+			color: #4B98FF;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<img src="./logo.png" height="30px" alt="" class="header-logo" id="logo">
+		<img src="./topic.png" width="100%" height="100%" alt="" class="header-topic">
+	</div>
+	<div class="select">
+		<div class="select-item" id="select-item">
+			<ul class="select-topic">
+				<li class="select-topic-item">主题:</li>
+				<li class="select-topic-items select-topic-default active" click="tab(default)" data-filter="*">不限</li>
+				<li class="select-topic-items select-topic-chinese" click="tab(chinese)" data-filter=".chinese">语文</li>
+				<li class="select-topic-items select-topic-math" click="tab(math)" data-filter=".math">数学</li>
+				<li class="select-topic-items select-topic-english" click="tab(english)" data-filter=".english">英语</li>
+				<li class="select-topic-items select-topic-chuzhong" click="tab(chuzhong)" data-filter=".chuzhong">小升初</li>
+				<li class="select-topic-items select-topic-personal" click="tab(personal)" data-filter=".personal">素质拓展</li>
+				<!-- <li class="select-topic-items select-topic-高端" click="tab(6)">小升初</li>
+				<li class="select-topic-items select-topic-fazhi" click="tab(4)">道德与法治</li>
+				<li class="select-topic-items select-topic-kexue" click="tab(5)">科学</li>
+				<li class="select-topic-items select-topic-kexue" click="tab(8)">科学</li> -->
+				<li class="select-topic-items select-topic-gaoduan" click="tab(gaoduan)" data-filter=".gaoduan">高端增值</li>
+				<li class="select-topic-items select-topic-area" click="tab(area)" data-filter=".area">地区专版</li>
+			</ul>
+			<hr />
+			<ul class="select-xueqi">
+				<li class="select-xueqi-item">学期:</li>
+				<li class="select-xueqi-items select-xueqi-default" click="tabs(0)" data-filter="*">不限</li>
+				<li class="select-xueqi-items select-xueqi-first" click="tabs(1)" data-filter=".first">第一学期</li>
+				<li class="select-xueqi-items select-xueqi-second" click="tabs(2)" data-filter=".second">第二学期</li>
+			</ul>
+		</div>
+		<div class="select-detail">
+			<!-- 语文不限 -->
+			<div class="select-detail-item active chinese"
+				onClick="window.open('http://www.xuekeedu.com/zt/2019hanjia/')" id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/2019hanjia349.jpg" alt="" width="100%" height="200px"
+					title="寒假补习大作战">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">寒假</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">寒假补习大作战</p>
+						<p class="detail-content-key">讲练结合，复习巩固，提前预习</p>
+					</div>
+				</div>
+			</div>
+			<div class="select-detail-item chinese" onClick="window.open('http://www.xuekeedu.com/zt/yueduzuowen/')"
+				id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yueduzuowen349-216.jpg" alt="" width="100%"
+					height="200px" title="阅读写作一站式资源库">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">大语文</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">阅读写作一站式学习</p>
+						<p class="detail-content-key">课内外深度剖析，分学段精讲</p>
+					</div>
+				</div>
+			</div>
+			<div class="select-detail-item chinese" onClick="window.open('http://www.xuekeedu.com/zt/2019bubianqimo/')"
+				id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/2019hanjia349.jpg" alt="" width="100%" height="200px"
+					title="部编版教材配套期末复习全程集训">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">部编版</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">部编版期末复习</p>
+						<p class="detail-content-key">语文&道德与法治好卷精选</p>
+					</div>
+				</div>
+			</div>
+			<div class="select-detail-item chinese" onClick="window.open('http://www.xuekeedu.com/zt/mingzhubaike/')"
+				id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yueduzuowen349-216.jpg" alt="" width="100%"
+					height="200px" title="名著百科知识荟萃">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">百科</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">名著百科知识荟萃</p>
+						<p class="detail-content-key">古今中外经典，历久弥新</p>
+					</div>
+				</div>
+			</div>
+			<!-- 语文第一学期 -->
+			<div class="select-detail-item chinese first" onClick="window.open('http://www.xuekeedu.com/zt/chengyu/')" id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/2019hanjia349.jpg" alt="" width="100%" height="200px"
+					title="暑期成语小课堂">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">成语</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">成语小课堂</p>
+						<p class="detail-content-key">语文&音频动画大通关</p>
+					</div>
+				</div>
+			</div>
+			<div class="select-detail-item chinese first" onClick="window.open('http://www.xuekeedu.com/zt/shufa/')" id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/shufa349-216.jpg" alt="" width="100%" height="200px"
+					title="小学书法教学资源">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">书法</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">小学书法教学资源专题</p>
+						<p class="detail-content-key">翰墨书香，诗意成长</p>
+					</div>
+				</div>
+			</div>
+			<!-- 语文第二学期 -->
+			<div class="select-detail-item chinese second" onClick="window.open('hhttp://www.xuekeedu.com/zt/yueduzuowen/')"
+				id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yueduzuowen349-216.jpg" alt="" width="100%"
+					height="200px" title="阅读写作一站式资源库">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">大语文</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">阅读写作一站式学习</p>
+						<p class="detail-content-key">课内外深度剖析，分学段精讲</p>
+					</div>
+				</div>
+			</div>
+			<div class="select-detail-item chinese second" onClick="window.open('http://www.xuekeedu.com/zt/wenxue/')" id="chinese">
+				<img src="http://www.xuekeedu.com/zthz/data_img/wenxue349-216.jpg" alt="" width="100%" height="200px"
+					title="优秀儿童文学作品朗读">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">文学</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">优秀儿童文学作品</p>
+						<p class="detail-content-key">儿童文学优秀作品朗读</p>
+					</div>
+				</div>
+			</div>
+			<!-- 数学不限 -->
+			<div class="select-detail-item math" onClick="window.open('http://www.xuekeedu.com/zt/sxjdyyt/')" id="math">
+				<img src="http://www.xuekeedu.com/zthz/data_img/sxjdyyt349-216.jpg" alt="" width="100%" height="200px"
+					title="经典应用题 专项分类练习">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">专项</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">数学经典应用题专项分类</p>
+						<p class="detail-content-key">经典常考应用题，几何分数行程问题</p>
+					</div>
+				</div>
+			</div>
+			<!-- 数学第一学期 -->
+			<div class="select-detail-item math first" onClick="window.open('http://www.xuekeedu.com/zt/2019mathfinal/')"
+				id="math">
+				<img src="http://www.xuekeedu.com/zthz/data_img/2019mathfinal349-216.jpg" alt="" width="100%"
+					height="200px" title="  期末复习一点通">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">期末</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">数学期末复习</p>
+						<p class="detail-content-key">第一学期各版本知识梳理冲刺</p>
+					</div>
+				</div>
+			</div>
+			<!-- 数学第二学期 -->
+			<div class="select-detail-item math second" onClick="window.open('http://www.xuekeedu.com/zt/aoshusiwei/')" id="math">
+				<img src="http://www.xuekeedu.com/zthz/data_img/aoshusiwei349.jpg" alt="" width="100%" height="200px"
+					title="  （导学案/课件）奥数思维训练">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">奥数</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">奥数思维训练</p>
+						<p class="detail-content-key">学习数学，热爱数学，精通数学</p>
+					</div>
+				</div>
+			</div>
+			<!-- 英语不限 -->
+			<div class="select-detail-item english" onClick="window.open('http://www.xuekeedu.com/zt/yyyuedu/')" id="english">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yyyuedu349-216.jpg" alt="" width="100%" height="200px"
+					title="小学英语阅读养成">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">阅读</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">小学英语阅读养成</p>
+						<p class="detail-content-key">绘本、拓展、分级、小升初</p>
+					</div>
+				</div>
+			</div>
+			<!-- 英语第一学期 -->
+			<div class="select-detail-item english first" onClick="window.open('http://www.xuekeedu.com/zt/yywy1/')" id="english">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yywy1349x216.jpg" alt="" width="100%" height="200px"
+					title="英语外研一起资料库">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">同步</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">英语外研一起资料库</p>
+						<p class="detail-content-key">第一学期各类教学资源大全</p>
+					</div>
+				</div>
+			</div>
+			<!-- 英语第二学期 -->
+			<div class="select-detail-item english second" onClick="window.open('http://www.xuekeedu.com/zt/2020yyxsc/')" id="english">
+				<img src="http://www.xuekeedu.com/zthz/data_img/2020yyxsc349-216.jpg" alt="" width="100%" height="200px"
+					title="英语小升初全攻略">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">小升初</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">英语小升初全攻略</p>
+						<p class="detail-content-key">三轮复习，轻松备考</p>
+					</div>
+				</div>
+			</div>
+			<!-- 小升初不限 -->
+			<div class="select-detail-item chuzhong" onClick="window.open('http://www.xuekeedu.com/zt/yyyuedu/')" id="chuzhong">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yyyuedu349-216.jpg" alt="" width="100%" height="200px"
+					title="小升初英语阅读理解专项">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">小升初</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">小升初英语阅读理解专项</p>
+						<p class="detail-content-key">译林版，每天一篇</p>
+					</div>
+				</div>
+			</div>
+			<!-- 小升初第一学期 -->
+			<!-- <div class="select-detail-item" onClick="window.open('http://www.xuekeedu.com/f12278.html')" id="chuzhong">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yywy1349x216.jpg" alt="" width="100%" height="200px"
+					title="小升初英语阅读理解专项">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">同步</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">英语外研一起资料库</p>
+						<p class="detail-content-key">第一学期各类教学资源大全</p>
+					</div>
+				</div>
+			</div> -->
+			<!-- 暂无 -->
+			<!-- 小升初第二学期 -->
+			<div class="select-detail-item chuzhong second" onClick="window.open('http://www.xuekeedu.com/zt/rise2016/')" id="chuzhong">
+				<img src="http://www.xuekeedu.com/zthz/data_img/ziyuandjj.jpg" alt="" width="100%" height="200px"
+					title="2016小升初资源大集结">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">资源</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">2016小升初资源大集结</p>
+						<p class="detail-content-key">微课+讲练结合</p>
+					</div>
+				</div>
+			</div>
+			<!-- 素质拓展不限 -->
+			<div class="select-detail-item personal" onClick="window.open('http://www.xuekeedu.com/zt/jsgzfz/')" id="personal">
+				<img src="http://www.xuekeedu.com/zthz/data_img/jsgz349-216.jpg" alt="" width="100%" height="200px"
+					title="教师工作辅助资源包">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">素材</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">教师工作辅助资源包</p>
+						<p class="detail-content-key">计划总结，日常管理，教研活动</p>
+					</div>
+				</div>
+			</div>
+			<!-- 素质拓展第一学期 -->
+			<!-- <div class="select-detail-item" onClick="window.open('http://www.xuekeedu.com/f12278.html')" id="chuzhong">
+					<img src="http://www.xuekeedu.com/zthz/data_img/yywy1349x216.jpg" alt="" width="100%" height="200px"
+						title="小升初英语阅读理解专项">
+					<div class="detail-box">
+						<div class="detail-cat">
+							<button class="btn-cat">同步</button>
+						</div>
+						<div class="detail-content">
+							<p class="detail-content-title">英语外研一起资料库</p>
+							<p class="detail-content-key">第一学期各类教学资源大全</p>
+						</div>
+					</div>
+				</div> -->
+			<!-- 素质拓展第二学期 -->
+			<!-- <div class="select-detail-item" onClick="window.open('http://www.xuekeedu.com/zt/rise2016/')" id="chuzhong">
+					<img src="http://www.xuekeedu.com/zthz/data_img/ziyuandjj.jpg" alt="" width="100%" height="200px"
+						title="2016小升初资源大集结">
+					<div class="detail-box">
+						<div class="detail-cat">
+							<button class="btn-cat">资源</button>
+						</div>
+						<div class="detail-content">
+							<p class="detail-content-title">2016小升初资源大集结</p>
+							<p class="detail-content-key">微课+讲练结合</p>
+						</div>
+					</div>
+				</div> -->
+			<!-- 高端增值不限 -->
+			<div class="select-detail-item gaoduan" onClick="window.open('http://www.xuekeedu.com/zt/2019work/')" id="gaoduan">
+				<img src="http://www.xuekeedu.com/zthz/data_img/2019work349-216.jpg" alt="" width="100%" height="200px"
+					title="2019精品专辑年度榜">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">榜单</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">2019年精品专辑年度榜</p>
+						<p class="detail-content-key">汇名师，创佳作，传经典</p>
+					</div>
+				</div>
+			</div>
+			<!-- 高端增值第一学期 -->
+			<div class="select-detail-item gaoduan first" onClick="window.open('http://www.xuekeedu.com/f1644.html')" id="gaoduan">
+				<img src="http://www.xuekeedu.com/zthz/data_img/sjzy.jpg" alt="" width="100%" height="200px"
+					title="2016小学暑假作业本">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">暑假</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">2016小学暑假作业本</p>
+						<p class="detail-content-key">基础篇（培养兴趣，巩固基础）、预习篇（预热新知，先行一步）</p>
+					</div>
+				</div>
+			</div>
+			<!-- 高端增值第二学期  -->
+			<div class="select-detail-item gaoduan second" onClick="window.open('http://www.xuekeedu.com/a2901.html')" id="gaoduan">
+				<img src="http://www.xuekeedu.com/zthz/data_img/kxdyk348-216.jpg" alt="" width="100%" height="200px"
+					title="开学第一考">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">开学</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">开学第一考</p>
+						<p class="detail-content-key">春季开学第一考套卷</p>
+					</div>
+				</div>
+			</div>
+			<!-- 地区专版不限 -->
+			<div class="select-detail-item area" onClick="window.open('http://www.xuekeedu.com/zt/xxhunandishijuan/')"
+				id="area">
+				<img src="http://www.xuekeedu.com/zthz/data_img/xxhunandishijuan349-216.jpg" alt="" width="100%"
+					height="200px" title="湖南省各地区历年考试真题">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">真题</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">湖南省各地区历年考试真题</p>
+						<p class="detail-content-key">各地试卷专供，直击考点</p>
+					</div>
+				</div>
+			</div>
+			<!-- 地区专版第一学期 -->
+			<div class="select-detail-item area first" onClick="window.open('http://www.xuekeedu.com/zt/yulin/')" id="area">
+				<img src="http://www.xuekeedu.com/zthz/data_img/yulin349x216.jpg" alt="" width="100%" height="200px"
+					title="榆林资源直通车">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">专区</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">榆林资源直通车</p>
+						<p class="detail-content-key">1-6年级，各学科资源大全</p>
+					</div>
+				</div>
+			</div>
+			<!-- 地区专版第二学期  -->
+			<div class="select-detail-item area second" onClick="window.open('http://www.xuekeedu.com/zt/bjzy2/')" id="area">
+				<img src="http://www.xuekeedu.com/zthz/data_img/bjzy2349-216.png" alt="" width="100%" height="200px"
+					title="北京资源大全">
+				<div class="detail-box">
+					<div class="detail-cat">
+						<button class="btn-cat">专区</button>
+					</div>
+					<div class="detail-content">
+						<p class="detail-content-title">北京资源直通车</p>
+						<p class="detail-content-key">1-6年级，各学科资源大全</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<p class="footer-contect">关于我们 联系我们 网站地图 版权声明 招聘信息 帮助中心 壁纸下载</p>
+		<p class="footer-jubao">违法和不良信息举报电话：400-102-2000 举报邮箱：jubao@xkw.cn</p>
+		<p class="footer-chanquan">学科网 zxxk.com 版权所有 京ICP备12013499号 京ICP证080135号 北京市公安局海淀分局备案号：1101081948</p>
+		<span class="banquan">由于学科网是一个信息分享及获取的平台，不确保部分用户上传资料的来源及知识产权归属。如您发现相关资料侵犯您的合法权益，请联系学科网，我们核实后将及时进行处理。<a
+				href="https://sso.zxxk.com/login?service=https%3a%2f%2fauth.zxxk.com%2fcallback%3fcurl%3dhttp%253a%252f%252fuser.zxxk.com%252f%253fSource%253dS7%2526amp%253bType%253d%2525E6%25258A%252595%2525E8%2525AF%252589%2526Category%253d%2525E8%2525B5%252584%2525E6%252596%252599%2525E7%25259B%2525B8%2525E5%252585%2525B3">版权申诉</a></span>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+	<script>
+		let logo = document.getElementById('logo');
+		logo.addEventListener('click', function () {
+			window.open("http://www.xuekeedu.com/");
+		})
+		// let defaultTopic = document.querySelector('.select-topic-default');
+		// defaultTopic.style.background = 'orange';
+		// defaultTopic.style.width = '40px';
+		// defaultTopic.style.height = '20px';
+		// defaultTopic.style.textAlign = 'center';
+		// defaultTopic.style.lineHeight = '25px';
+		// defaultTopic.style.borderRadius = '12.5px';
+		// defaultTopic.style.color = '#fff';
+		// let defaultXueqi = document.querySelector('.select-xueqi-default');
+		// defaultXueqi.style.background = 'orange';
+		// defaultXueqi.style.width = '40px';
+		// defaultXueqi.style.height = '20px';
+		// defaultXueqi.style.textAlign = 'center';
+		// defaultXueqi.style.lineHeight = '25px';
+		// defaultXueqi.style.borderRadius = '12.5px';
+		// defaultXueqi.style.color = '#fff';
+		// let topicItem = document.querySelectorAll('.select-detail-item');
+		// let topic = document.querySelectorAll('.select-topic-items');
+		// console.log('topic', topic)
+		// function tab() {
+		// 	for (let i = 0; i < topic.length; i++) {
+		// 		topic[i].addEventListener('click', () => {
+		// 			topic[i].style.background = 'orange';
+		// 			topic[i].style.width = '40px';
+		// 			topic[i].style.height = '20px';
+		// 			topic[i].style.textAlign = 'center';
+		// 			topic[i].style.lineHeight = '25px';
+		// 			topic[i].style.borderRadius = '12.5px';
+		// 			topic[i].style.color = '#fff';
+		// 		})
+		// 	}
+		// }
+		// filter by jQuery
+		$('.select-detail').isotope({
+			itemSelector: '.select-detail-item',
+			filter: "*"
+		});
+
+		$('.select-topic li').click(function () {
+			var selector = $(this).attr('data-filter');
+
+			$('.select-detail').isotope({
+				filter: selector,
+			})
+
+			//changing active class with click event
+			$('.select-topic li.active').removeClass('active');
+			$(this).addClass('active');
+		});
+		$('.select-detail').isotope({
+			itemSelector: '.select-detail-item',
+			filter: "*"
+		});
+
+		$('.select-xueqi li').click(function () {
+			var selector = $(this).attr('data-filter');
+
+			$('.select-detail').isotope({
+				filter: selector,
+			})
+
+			//changing active class with click event
+			$('.select-xueqi li.active').removeClass('active');
+			$(this).addClass('active');
+		});
+	</script>
+</body>
+
+</html>

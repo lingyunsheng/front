@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.xkw-container {
+    width: 100%;
+    background: #fff;
+}
+.xkw-container .xkw-navbar {
+    /* width: 100%; */
+    background: #f2f2f2;
+    height: 30px;
+    line-height: 30px;
+}
+.xkw-container .xkw-navbar .xkw-navbar-content {
+    width: 1200px;
+    margin: 0 auto;
+    display: block;
+    overflow: hidden;
+}
+.xkw-navbar-content .xkw-navbar-logo {
+    float:left;
+}
+
+.xkw-navbar-logo .navbar-title {
+    font-size: 18px;
+    color: #4694E1;
+    font-weight:800;
+}
+.xkw-navbar-logo .navbar-clip {
+    font-size: 14px;
+    color:#333;
+}
+.xkw-navbar-logo .navbar-subtitle {
+    font-size: 14px;
+    color:#333;
+}
+
+.xkw-navbar-content .xkw-navbar-nav {
+    float: right;
+}
+.xkw-navbar .xkw-navbar-nav ul li {
+    list-style: none;
+    display: block;
+    float: left;
+    padding-right: 5px;
+    font-size:14px;
+    color:#90877C;
+    cursor: pointer;
+}
+
+.xkw-navbar .xkw-navbar-nav ul li span {
+    padding: 0 5px;
+}
+
+.xkw-navbar .xkw-navbar-nav .nav-item .login {
+    background: darkorange;
+    color: #fff;
+    width: 38px;
+    text-align: center;
+    padding-left: 3px;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.xkw-navbar .xkw-navbar-nav .nav-item .service {
+    color: #2F98FC;
+    font-weight: 600;
+}
+
+.xkw-container .xkw-content {
+    width: 100%;
+    background-image: url('../img/bcackground.png');
+}
+
+.xkw-container .xkw-content .xkw-content-bg .bg {
+    width: 100%;
+    height: 360px;
+}
+
+.xkw-container .xkw-content .xkw-content-section {
+    width: 1200px;
+    margin: 0 auto;
+}
+.xkw-content-section .xkw-item-info {
+    margin-top: 20px;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti {
+    display:block;
+    height: 58px;
+    position: relative;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti .xkw-zhuanti-left {
+    position: absolute;
+    transform: translate(310px, -20px);
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti .xkw-zhuanti-right {
+    position: absolute;
+    transform: translate(700px, -35px);
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti .xkw-zhuanti-title {
+    background-image: url('../img/形状\ 9\ 拷贝\ 3.png');
+    background-repeat: no-repeat;
+    width: 257px;
+    height: 50px;
+    line-height: 50px;
+    margin: 50px auto 0px;
+    text-align: center;
+    color: #49806c;
+    font-size: 24px;
+    font-weight: 800;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail {
+    background: #fff;
+    margin: 30px auto;
+    height: 320px;
+    /* border-radius: 45px; */
+    border: 5px solid #6d9071;
+    padding:53px 53px;
+    color: #6c7981;
+    border-radius: 40px 40px 40px 40px;
+}
+.xkw-content-section .xkw-item-info .resource-show {
+    background: #fff;
+    margin: 30px auto;
+    height: 450px;
+    /* border-radius: 45px; */
+    border: 5px solid #6d9071;
+    padding:53px 53px;
+    color: #6c7981;
+    border-radius: 40px 40px 40px 40px;
+}
+.xkw-content-section .xkw-item-info .rank-more {
+    background: #fff;
+    margin: 30px auto;
+    height: 150px;
+    /* border-radius: 45px; */
+    border: 5px solid #6d9071;
+    padding:53px 53px;
+    color: #6c7981;
+    border-radius: 40px 40px 40px 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail p {
+    margin-bottom: 17px;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .detail-item  {
+    display: block;
+    margin-top: 54px;
+    cursor: pointer;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .detail-item .detail-items {
+    list-style: none;
+    float: left;
+    width: 150px;
+    height: 150px;
+    font-size: 12px;
+    border-radius: 100% solid #bfe0d4;
+    margin-right: 40px;
+    background-image: url('../img/1\ 拷贝\ 4.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #49806c;
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 53px;
+    position: relative;
+    cursor: pointer;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .detail-item .detail-items button{ 
+    background: #f58961;
+    color:#fff;
+    font-size:14px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border:none;
+    border-radius:16.5px;
+    top:125px;
+    right: 23px;
+    position: absolute;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .resource-item  {
+    display: block;
+    overflow: hidden;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .btn-left {
+    background-image: url('../img/矩形\ 4\ 拷贝.png');
+    background-repeat: no-repeat;
+    width: 39px;
+    height: 58px;
+    border:none;
+    background-color: #fff;
+    margin-right: 20px;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .btn-right {
+    background-image: url('../img/矩形\ 4\ 拷贝\ 2.png');
+    background-repeat: no-repeat;
+    padding-right: 20px;
+    width: 29px;
+    height: 48px;
+    border:none;
+    background-color: #fff;
+    margin-right: -20px;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .resource-item .resource-items {
+    list-style: none;
+    background-image: url('../img/书籍封面.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-right: 75px;
+    width: 141px;
+    height: 180px;
+    float: left;
+    color: #fff;
+    margin-bottom: 73px;
+    position: relative;
+    cursor: pointer;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .resource-item .resource-items span {
+    position: absolute;
+    bottom: 5px;
+    left: 45px;
+    padding-left: 5px;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .rank-item  {
+    display: block;
+    overflow: hidden;
+    height: 144px;
+}
+.xkw-content-section .xkw-item-info .xkw-zhuanti-detail .rank-item .rank-items {
+    list-style:none;
+    background: #81c5ac;
+    width: 251px;
+    height: 143px;
+    float:left;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.xkw-container .xkw-content .xkw-content-section .xkw-footer {
+    margin-top: 83px;
+    color:#fff;
+    padding-bottom: 73px;
+}
+.xkw-container .xkw-content .xkw-content-section .xkw-footer .xkw-weiquan {
+    margin-left: 286px;
+}
+
+.xkw-container .xkw-content .xkw-content-section .xkw-footer .xkw-chanquan {
+    margin-left: 176px;
+    margin-top: 14px;
+}
