@@ -1,0 +1,826 @@
+.user.settings.profile .container{
+	border-radius: 8px;
+}
+.r{
+	float:right;
+}
+.clearfix{
+	overflow:hidden;
+	padding-bottom:10px;
+}
+.mt0{
+	margin-top: 0px !important;
+}
+.mt-2{
+	margin-top: -2px !important;
+}
+.ml0{
+	margin-left: 0px !important;
+}
+.mr0{
+	margin-right: 0px !important;
+}
+.mr4{
+	margin-right: 4px !important;
+}
+.mt5{
+	margin-top: 5px !important;
+}
+.pl0 {
+	padding-left: 0 !important;
+}
+.pr0 {
+	padding-right: 0 !important;
+}
+.pb0 {
+	padding-bottom: 0 !important;
+}
+.m9 {
+	margin: 9px !important;
+}
+.mt30{
+	margin-top: 33px;
+}
+.mb30{
+	margin-bottom: 30px !important;
+}
+.mb5{
+	margin-bottom: 5px !important;
+}
+.hide {
+	display: hidden;
+}
+.w117{
+	min-width: 117px;
+	text-align: center !important;
+	display: inline-block !important;
+}
+.inlineblock {
+	display: inline-block;
+}
+.ui.definemenu span.avatar .ellipsis {
+	margin-right: 0px !important;
+}
+.headtitle{
+	font-size: 18px;
+	color: #000000;
+	line-height: 27px;
+	padding-top:10px;
+}
+.attached .ui.border-input {
+    padding: 0 14px;
+    background: #E8E8E8;
+    border-radius: 4px;
+    color: #a9a9a9;
+}
+.ui.form .inline.fields>label,.tip{
+	width:54px;
+	text-align:right;
+}
+.tip{
+	display:inline-block;
+	float:left;
+	font-size: 14px;
+	color: rgba(0,0,0,0.60);
+	margin-right:18px;
+	font-weight: 600;
+}
+.item-content{
+	max-width: 500px;
+	float: left;
+	font-size: 12px;
+	color: rgba(0,0,0,0.60);
+	line-height: 22px;
+}
+.text-center{
+	text-align: center;
+}
+.text-center i{
+	font-size:4em;
+	margin-bottom:20px;
+}
+.userinfo .image{
+	width:72px;
+	height:72px;
+	float:left;   
+    display: block;
+}
+.userinfo .otherhead{
+	width:72px;
+	height:72px;
+	display: block;
+	margin:0 auto;
+}
+.userinfo .image>img ,.userinfo .otherhead>img{
+	width:72px;
+	height:72px;
+	border-radius:50%;
+}
+.userinfo .content{
+	width: auto;
+    display: block;
+    float:left;
+    margin-top:16px;
+    margin-left:16px;
+}
+.userinfo .content .header{
+	color: #000000;
+	font-weight: bold;
+	height: 1.4em;
+	margin-bottom:4px;
+	font-size: 17px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-bottom: 4px;
+}
+.userinfo .content .username{
+	font-size: 14px;
+	color: #000000;
+}
+.line{
+	width:100%;
+	height:2px;
+	background: rgba(0,0,0,0.20);
+	margin:2rem 0 0;
+}
+.mt-23{
+	margin-top: 1.8em !important;
+}
+.positionbox{
+	position:relative;
+	z-index: 99;
+}
+.branchesPop{
+	display: none;
+	width:300px;
+	position:absolute;
+	top:40px;
+	right:0;
+	z-index:100;
+	text-align: left;
+    background: #fff;
+    box-shadow: 1px 3px 3px 0 rgba(0,0,0,.2), 1px 3px 15px 2px rgba(0,0,0,.2);
+    border-radius: 8px;
+}
+.branchesPop .content{
+	padding:1.5rem;
+}
+.js-menu-text em{
+	font-style: normal;
+}
+/* forks派生仓库 */
+.repository.new.repo form .header, .repository.new.migrate form .header, .repository.new.fork form .header{
+	padding-left: 10px !important;
+}
+.settings.profile .container.infobox,
+.repository.new.fork .container.infobox{
+	padding: 0 62px;
+}
+.ui.form .ui.warning.message.show {
+	display: inline-block;
+	margin-top: 0;
+	text-align: left;
+	font-size: .88em;
+	line-height: 1.7em;
+	border-color: #b58105;
+	background-color: #fff8db;
+	color: #bd8d1b;
+}
+.ui.forkItem {
+    width: 500px;
+}
+.ml8{
+	margin-left: 8px !important;
+}
+.mr15{
+	margin-right: 15px !important;
+}
+.hidden{
+	display: none !important;
+}
+.fork .msg{
+	width: 250px;
+	margin: 0 auto;
+}
+.fork .msg .title{
+	font-size: 18px;
+}
+.fork .msg .desc p{
+	font-size: 16px;
+	font-weight: 600;
+	margin: 30px 0 5px 0;
+}
+.fork .msg .desc a{
+	font-size: 14px;
+}
+.fork .container{
+	min-height: 360px;
+}
+.fork a.back{
+	float: right;
+	color: #2185D0;
+	font-weight: normal;
+}
+.fork .headtitle{
+	padding-top: 0px;
+}
+/* fork 仓库列表 */
+.sub-nav{
+	width: 100%;
+	height: 21px;
+	line-height: 21px;
+	margin-top: 18px;
+}
+.sub-nav a.nav-item{
+	margin-right: 25px;
+	font-size: 14px;
+	color:rgba(0,0,0,.95);
+}
+.sub-nav a.nav-item.active{
+	font-weight: 600;
+	font-size: 14px;
+}
+.user.profile .ui.repository.list{
+	margin-top: 13px;
+}
+.ui.repository.list .item .fork-flag{
+	text-indent: 23px;
+	margin-bottom: 0.9em;
+	margin-top: -0.6em;
+	font-size: 13px;
+	color: #333333;
+}
+.ui.repository.list .item .has-emoji,
+.ui.repository.list .has-emoji {
+	color: #666666;
+	font-size: 13px;
+	margin-bottom: 0.7em;
+	word-wrap: break-word;
+}
+.feeds .news.empty,
+.ui.repository.list .item.empty{
+	margin-top:	50px;
+	text-align: center;
+	color: #888888;
+	line-height: 1.14285714em;
+}
+.feeds .news.noMore {
+	margin-top: 1.5em;
+	margin-bottom: .7em;
+	display: none;
+}
+.ui.secondary.pointing.menu{
+	margin-bottom: 2px;
+}
+/* watchers cardlist */
+.repository.watchers ul.list li .name a {
+	display: inline-block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*  仓库详情页面 */
+.repository .head .ui.huge.breadcrumb {
+	font-size: 1.14rem;
+}
+.repository .head .fork-flag {
+	margin-left: 24px;
+}
+
+/* 仓库详细页面分支代码 */
+.repository.file.list #file-buttons .ui.button{
+	padding: .76771429em 1.5em .76771429em;
+	line-height: 18px;
+}
+.repository #clone-panel input{
+    padding: .74671429em .8em .74671429em;
+}
+.branch-op {
+	width: 30% !important;
+}
+.branch-op .delete-branch-button {
+	height: 32px;
+	line-height: 1.2em;
+	margin-left: 3px;
+}
+.form .help.hide {
+	display: none;
+}
+.repository .branch_text {
+	max-width: 236px;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background-color: white;
+}
+.repository.compare.pull .choose.branch .octicon.octicon-arrow-left {
+	font-size: 20px;
+	padding-right: 0 !important;
+	color: #21ba45;
+}
+
+/* 首页左侧列表 清除浮动*/
+
+.user.profile .ui.card .extra.content ul.szcourselist li{
+	overflow: hidden;
+}
+.user.profile .ui.card .ui.list .label .title {
+	display: inline-block;
+}
+.user.profile .ui.card .ui.list .label a.showMore {
+	text-decoration: none;
+	color: gray;
+	float: right;
+}
+.user.profile .ui.card .extra.content ul li {
+	height: 40px;
+}
+.user.profile .ui.card .extra.content ul li a {
+	display: inline-block;
+    width: 192px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 20px;
+    vertical-align: bottom;
+}
+.user.profile .infocontent {
+	border: 0;
+	box-shadow: none;
+	background: #f5f5f5;
+	border-radius: 8px;
+}
+.user.profile .ui.card .extra.content ul li:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+
+/* 头像 */
+img.avatar{
+	border-radius: 50% !important;
+}
+/* issues 详情页 */
+.title-input {
+	width: 550px;
+	padding: .37857143em 1em;
+	font-size: 14px;
+}
+h3.ui.header .sub.header{
+	margin-top: 10px;
+}
+.repository .ui.tabs.divider{
+	margin-bottom: 25px;
+}
+/* .dashboard{
+	padding-top: 20px;
+} */
+h3.ui.dividing.header{
+	padding-bottom: 1.21428571rem;
+}
+div.ui.dividing.header .ui.sub.header{
+	margin-top: 10px;
+}
+.mt5-minus{
+	margin-top: -5px !important;
+}
+.repository.view.issue .title .index{
+	color: rgba(0,0,0,.87);
+	font-weight: 600;
+}
+.vertical-middle{
+	vertical-align: middle;
+}
+.feeds .news p.title-message{
+	line-height: 1.4em;
+	word-wrap: break-word;
+    word-break: break-all;
+}
+span#issue-title {
+	word-break: break-all;
+	line-height: 1.4em;
+}
+.repository.view.issue .title .label{
+	margin-bottom: 3px;
+}
+
+/* header */
+.header-wrapper .ui.breadcrumb a{
+	color: #FFFFFF;
+}
+.header-wrapper .ui.breadcrumb .divider{
+	color: #9199A1;
+}
+.header-wrapper .ui.huge.breadcrumb i{
+	color: #FFFFFF;
+}
+.header-wrapper .ui.labeled.button:not([class*="left labeled"])>.button{
+	background: rgba(255,255,255,0.10) !important;
+	border-radius: 6px 0 0 6px;
+	color: #FFFFFF !important;
+	padding: 12px 16px;
+	line-height: 16px;
+}
+.header-wrapper .ui.labeled.button:not([class*="left labeled"])>.button:hover{
+	background: rgba(255,255,255,0.20) !important;
+}
+.header-wrapper .ui.labeled.button:not([class*="left labeled"])>.label{
+	background: rgba(255,255,255,0.10);
+	border-radius: 0 6px 6px 0;
+	color: #FFFFFF;
+}
+.header-wrapper .ui.labeled.button:not([class*="left labeled"])>.label:hover{
+	background: rgba(255,255,255,0.20);
+}
+.header-wrapper .ui.tabular.menu .item{
+	box-sizing: border-box;
+	color: rgba(255,255,255,0.80);
+	border-radius: .28571429rem .28571429rem 0 0!important;
+}
+.header-wrapper .ui.tabular.menu .active.item{
+	color: #1994E6;
+	border: 0;
+	font-weight: normal;
+}
+.header-wrapper .ui.tabular.menu .active.item span.label{
+	background-color: #1994E6!important;
+    border-color: #1994E6!important;
+}
+.header-wrapper .ui.tabular.menu .item:not(.active):hover{
+	background: rgba(255,255,255,0.10);
+	/* border-radius: .28571429rem .28571429rem 0 0!important; */
+}
+.repository .header-wrapper .head .fork-flag,
+.header-wrapper .head .ui.breadcrumb .fork-flag a{
+	font-size: 12px;
+	color: rgba(255,255,255,0.60);
+	line-height: 12px;
+	margin: 8px 0;
+}
+.header-wrapper .head .ui.breadcrumb .fork-flag a:hover{
+	color: #FFFFFF;
+}
+.repository .header-wrapper{
+	padding-top: 17px;
+}
+.following.bar .ui.secondary.menu>.item{
+	padding: .71571429em 1.14285em;
+	color: rgba(255, 255, 255, .6);
+}
+.following.bar .ui.secondary.menu>.item.active {
+	color: #fff;
+}
+.following.bar .ui.secondary.menu>.item:not(.brand):hover {
+	color: #fff;
+	background: rgba(255,255,255,.1);
+}
+.ui.menu .ui.dropdown .menu>.item{
+	padding: .78571429em 1.38285714em!important;
+}
+.following.bar .top.menu a.item.brand{
+	margin-right: 8px;
+}
+.w-104{
+	width: 104px;
+	display: inline-block;
+}
+.commit-tip{
+	margin-right: 5px;
+    text-align: right;
+    margin-left: 10px;
+    font-size: 13px;
+    color: #888888;
+}
+.ui a.text.grey.commit-msg:hover{
+	color: rgba(0,0,0,.87) !important;
+}
+.issue.list .ui.label:first-child{
+	margin-bottom: 2px;
+}
+.issue.list > .item{
+	line-height: 1.4em;
+	word-break: break-all;
+}
+.szcourselist li a.name{
+	display: inline-block;
+	max-width: 145px;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.szcourselist li .star-nums{
+	display: inline-block;
+	max-width: 56px;
+	text-align: right;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+a.item[disabled="disabled"] {
+    color: #b5b5b5 !important;
+}
+/* 底部多语言下拉 */
+footer .ui.container{
+	padding: 10px 190px;
+}
+footer .container .links > .dropdown{
+	padding-left: 0;
+}
+/* 404/500页面 */
+.w400{
+	width: 400px;
+}
+.error-page{
+	color: #565353 !important;
+}
+.error-page h3{
+	margin-top: 30px;
+}
+.error-page p{
+	margin-top: 20px;
+}
+/* icon */
+.repository .head .breadcrumb .mega-octicon{
+	font-size: 20px;
+    width: 18px;
+}
+.repository .head .breadcrumb > *{
+	vertical-align: middle;
+}
+.ui.repository.list .item:first-child {
+	padding-top: 0px;
+	padding-bottom: 1rem;
+}
+.ui.repository.list .item.border-bottom {
+	border-bottom: 1px solid rgba(34,36,38,.15);
+}
+.ui.repository.list .item:not(:first-child){
+	border-top: 1px solid rgba(34,36,38,.15);
+	padding-top: 1rem !important;
+	padding-bottom: 1rem;
+}
+
+.ui.dividing.header{
+	word-break: break-all;
+}
+.wiki-page-selectValue{
+	display: inline-block;
+	max-width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.wiki-page-option{
+	max-width: 391px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.wiki-page-title{
+	word-break: break-all;
+}
+.ui .text.light.grey{
+	word-break: break-all;
+}
+/* pull requests 图标居中*/
+.repository.view.issue .pull .merge.box .avatar{
+	text-align: center;
+}
+.repository.view.issue .pull .merge.box .avatar .mega-octicon{
+	margin-top: 5px;
+}
+.ui.comments .comment .avatar img, .ui.comments .comment img.avatar{
+	border-radius: 50%;
+}
+.word-bread-all{
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: hidden;
+}
+.ui.menu .item.disabled,.ui.menu .item.disabled:hover{
+	color:rgba(40,40,40,.8);
+}
+.sixteen.wide+h3.twelve{
+	margin-top: 0;
+}
+.ui.header.wiki-list-title{
+	line-height: 1.5em;
+}
+.ui.header.wiki-list-title .ui.right{
+	margin-top: 2px;
+}
+.ui.header.wiki-list-title .sub.header{
+	margin-top: 15px;
+}
+/* org 组织页面 */
+.ui.attached.table.teams .item:first-child{
+	margin-top: 0px;
+}
+.organization.teams .members .ui.avatar,
+.dashboard.feeds .members .ui.avatar,
+.organization.profile .members .ui.avatar {
+    width: 54px;
+    height: 54px;
+    margin: 2px 2px;
+}
+.orglist-header .wide.column {
+	padding: 0.5em 1em;
+}
+.orglist-header .org-desc {
+	display: inline-block;
+	max-width: 294px;
+    line-height: 38px;
+    height: 38px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    white-space: nowrap;
+    margin-left: 6px;
+}
+.org-desc.lg {
+	max-width: 440px;
+}
+.dashboard.feeds .ui.right .head.menu .item.active,
+.dashboard.issues .ui.right .head.menu .item.active {
+	color: #2185d0;
+}
+.organization.profile .teams .item,
+.dashboard.feeds .teams .item {
+    padding: 10px 15px;
+}
+.dashboard.feeds .ui.grid>[class*="ten wide"].column,
+.dashboard.issues .ui.grid>[class*="ten wide"].column,
+.organization.profile .ui.grid>[class*="ten wide"].column,
+.organization.teams .ui.grid>[class*="ten wide"].column,
+.organization.settings .ui.grid>[class*="ten wide"].column {
+	width: 63.5%!important;
+}
+.dashboard.feeds .ui.grid>[class*="six wide"].column,
+.dashboard.issues .ui.grid>[class*="six wide"].column,
+.organization.profile .ui.grid>[class*="six wide"].column,
+.organization.teams .ui.grid>[class*="six wide"].column,
+.organization.settings .ui.grid>[class*="six wide"].column {
+	width: 36.5%!important;
+}
+.organization.new.org .ui.attached.segment {
+	padding: 0;
+	border: 0;
+}
+.organization.new.org form input {
+	width: 100% !important;
+}
+.org-title {
+	color: rgba(0, 0, 0, .87)
+}
+#org-info .header {
+	margin-top: 5px;
+}
+
+/* 组织内新建仓库,迁移外部仓库 */
+.repository.new.migrate .ui.attached.segment,
+.repository.new.repo .ui.attached.segment {
+	padding: 0;
+	border: 0;
+}
+.repository.new.repo .ui.form .field.column {
+	padding-top: 0px !important;
+	padding-bottom: 0;
+	margin: 0;
+}
+.repository.new.migrate .content .field.column {
+	display: inline-block;
+}
+.repository.new.migrate .ui.form .field>.selection.dropdown,
+.repository.new.migrate .ui.form .field>input,
+.repository.new.migrate form textarea,
+.repository.new.repo .ui.form .field>.selection.dropdown,
+.repository.new.repo .ui.form .field>input,
+.repository.new.repo form textarea {
+	width: 100% !important;
+}
+.repository.new.migrate form .optional .title,
+.repository.new.repo form .help,
+.repository.new.migrate form .help {
+	width: 100%;
+	margin-left: 0px !important;
+}
+.repository.new.repo .ui.form #auto-init {
+	margin-left: 0px !important;
+}
+.settings.profile .ui.form > .field,
+.repository.new.repo .ui.form .segment > .field,
+.repository.new.migrate .ui.form .segment > .field,
+.repository.new.repo .ui.form .field.column {
+	margin-bottom: 24px;
+}
+
+/* ======== go to top start ========== */
+.elevator {
+    position:fixed;
+    padding:0 16px;
+    bottom:150px;
+    margin-top:-140px;
+    right:0;
+    z-index:999;
+    background-color:#fff;
+    box-shadow: -2px 2px 5px 3px rgba(7, 17, 27, .1);
+}
+.elevator a {
+    display:block;
+    width:26px;
+    padding:16px 0;
+    font-size:22px;
+    line-height:20px;
+    color:#b5b9bc;
+    box-sizing:border-box;
+    text-align:center;
+    border-bottom:1px solid #edf1f2;
+}
+.elevator a:hover {
+    color:#14191e;
+}
+.elevator a i {
+    font-size:24px;
+    color:#b5b9bc;
+}
+.elevator a i:hover {
+    color:#14191e;
+}
+.elevator a span {
+    display:none;
+    font-size:12px;
+    color:#f01414;
+    line-height:12px;
+}
+.elevator .no-goto {
+    border-bottom:none;
+}
+.elevator .elevator-app:hover i, .elevator .elevator-faq:hover i, .elevator .elevator-msg:hover i, .elevator .elevator-top:hover i, .elevator .elevator-weixin:hover i {
+    display:none;
+}
+.elevator .elevator-app:hover span, .elevator .elevator-faq:hover span, .elevator .elevator-msg:hover span, .elevator .elevator-top:hover span, .elevator .elevator-weixin:hover span {
+    display:inline-block;
+}
+.elevator .elevator-app-box {
+    position:absolute;
+    width:172px;
+    height:212px;
+    bottom:-2px;
+    right:56px;
+    -webkit-transition:opacity .25s, transform .3s;
+    -moz-transition:opacity .25s, transform .3s;
+    transition:opacity .25s, transform .3s;
+    opacity:0;
+    filter:alpha(opacity=0);
+    max-width:0;
+    -webkit-transform:scale(.01);
+    -ms-transform:scale(.01);
+    transform:scale(.01);
+    -webkit-transform-origin:100% 95%;
+    -ms-transform-origin:100% 95%;
+    transform-origin:100% 95%;
+    background:url(/img/elevator.png?t=2) 0 -220px no-repeat;
+}
+.elevator .elevator-app:hover .elevator-app-box {
+    display:block;
+    visibility:visible;
+    opacity:1;
+    filter:alpha(opacity=100);
+    max-width:none;
+    -webkit-transform:scale(1);
+    -ms-transform:scale(1);
+    transform:scale(1);
+}
+.elevator .elevator-weixin-box {
+    position:absolute;
+    width:172px;
+    height:212px;
+    bottom:-4px;
+    right:56px;
+    -webkit-transition:opacity .25s, transform .3s;
+    -moz-transition:opacity .25s, transform .3s;
+    transition:opacity .25s, transform .3s;
+    opacity:0;
+    filter:alpha(opacity=0);
+    max-width:0;
+    -webkit-transform:scale(.01);
+    -ms-transform:scale(.01);
+    transform:scale(.01);
+    -webkit-transform-origin:100% 95%;
+    -ms-transform-origin:100% 95%;
+    transform-origin:100% 95%;
+    background:url(/img/elevator.png?t=2) no-repeat;
+}
+.elevator .elevator-weixin:hover .elevator-weixin-box {
+    display:block;
+    visibility:visible;
+    opacity:1;
+    filter:alpha(opacity=100);
+    max-width:none;
+    -webkit-transform:scale(1);
+    -ms-transform:scale(1);
+    transform:scale(1);
+}
+
+/* ========= go to top end ========== */
